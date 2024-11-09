@@ -29,17 +29,6 @@ public class ItemStack implements Cloneable, ConfigurationSerializable {
     /**
      * Defaults stack size to 1, with no extra data
      *
-     * @param type item material id
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public ItemStack(final int type) {
-        this(type, 1);
-    }
-
-    /**
-     * Defaults stack size to 1, with no extra data
-     *
      * @param type item material
      */
     public ItemStack(final Material type) {

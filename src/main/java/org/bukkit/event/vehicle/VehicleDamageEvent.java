@@ -15,11 +15,6 @@ public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
     private double damage;
     private boolean cancelled;
 
-    @Deprecated
-    public VehicleDamageEvent(final Vehicle vehicle, final Entity attacker, final int damage) {
-        this(vehicle, attacker, (double) damage);
-    }
-
     public VehicleDamageEvent(final Vehicle vehicle, final Entity attacker, final double damage) {
         super(vehicle);
         this.attacker = attacker;
@@ -45,32 +40,12 @@ public class VehicleDamageEvent extends VehicleEvent implements Cancellable {
     }
 
     /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public int _INVALID_getDamage() {
-        return NumberConversions.ceil(getDamage());
-    }
-
-    /**
      * Sets the damage done to the vehicle
      *
      * @param damage The damage
      */
     public void setDamage(double damage) {
         this.damage = damage;
-    }
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public void _INVALID_setDamage(int damage) {
-        setDamage(damage);
     }
 
     public boolean isCancelled() {

@@ -12,7 +12,7 @@ import org.bukkit.event.HandlerList;
  * <li>The Block returned by getBlock() is the block we are trying to place
  *     on, not the block we are trying to place.
  * <li>If you want to figure out what is being placed, use {@link
- *     #getMaterial()} or {@link #getMaterialId()} instead.
+ *     #getMaterial()} instead.
  * </ul>
  */
 public class BlockCanBuildEvent extends BlockEvent {
@@ -66,17 +66,6 @@ public class BlockCanBuildEvent extends BlockEvent {
      */
     public Material getMaterial() {
         return Material.getMaterial(material);
-    }
-
-    /**
-     * Gets the Material ID for the Material that we are trying to place.
-     *
-     * @return The Material ID for the Material that we are trying to place
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public int getMaterialId() {
-        return material;
     }
 
     @Override

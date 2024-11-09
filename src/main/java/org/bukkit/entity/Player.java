@@ -188,18 +188,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      */
     public boolean isSleepingIgnored();
 
-    /**
-     * Play a note for a player at a location. This requires a note block
-     * at the particular location (as far as the client is concerned). This
-     * will not work without a note block. This will not work with cake.
-     *
-     * @param loc The location of a note block.
-     * @param instrument The instrument ID.
-     * @param note The note ID.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public void playNote(Location loc, byte instrument, byte note);
 
     /**
      * Play a note for a player at a location. This requires a note block
@@ -241,16 +229,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     @Deprecated
     public void playSound(Location location, String sound, float volume, float pitch);
 
-    /**
-     * Plays an effect to just this player.
-     *
-     * @param loc the location to play the effect at
-     * @param effect the {@link Effect}
-     * @param data a data bit needed for some effects
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public void playEffect(Location loc, Effect effect, int data);
 
     /**
      * Plays an effect to just this player.
@@ -293,24 +271,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     @Deprecated
     public boolean sendChunkChange(Location loc, int sx, int sy, int sz, byte[] data);
 
-    /**
-     * Send a block change. This fakes a block change packet for a user at a
-     * certain location. This will not actually change the world in any way.
-     *
-     * @param loc The location of the changed block
-     * @param material The new block ID
-     * @param data The block data
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public void sendBlockChange(Location loc, int material, byte data);
 
     /**
      * Send a sign change. This fakes a sign change packet for a user at
      * a certain location. This will not actually change the world in any way.
      * This method will use a sign at the location's block or a faked sign
-     * sent via {@link #sendBlockChange(org.bukkit.Location, int, byte)} or
-     * {@link #sendBlockChange(org.bukkit.Location, org.bukkit.Material, byte)}.
+     * sent via * {@link #sendBlockChange(org.bukkit.Location, org.bukkit.Material, byte)}.
      * <p>
      * If the client does not have a sign at the given location it will
      * display an error message to the user.
@@ -854,18 +820,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     public boolean canSee(Player player);
 
     /**
-     * Checks to see if this player is currently standing on a block. This
-     * information may not be reliable, as it is a state provided by the
-     * client, and may therefore not be accurate.
-     *
-     * @return True if the player standing on a solid block, else false.
-     * @deprecated Inconsistent with {@link
-     *     org.bukkit.entity.Entity#isOnGround()}
-     */
-    @Deprecated
-    public boolean isOnGround();
-
-    /**
      * Checks to see if this player is currently flying or not.
      *
      * @return True if the player is flying, else false.
@@ -912,37 +866,6 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
      * @return The current allowed speed, from -1 to 1
      */
     public float getWalkSpeed();
-
-    /**
-     * Request that the player's client download and switch texture packs.
-     * <p>
-     * The player's client will download the new texture pack asynchronously
-     * in the background, and will automatically switch to it once the
-     * download is complete. If the client has downloaded and cached the same
-     * texture pack in the past, it will perform a quick timestamp check over
-     * the network to determine if the texture pack has changed and needs to
-     * be downloaded again. When this request is sent for the very first time
-     * from a given server, the client will first display a confirmation GUI
-     * to the player before proceeding with the download.
-     * <p>
-     * Notes:
-     * <ul>
-     * <li>Players can disable server textures on their client, in which
-     *     case this method will have no affect on them.
-     * <li>There is no concept of resetting texture packs back to default
-     *     within Minecraft, so players will have to relog to do so.
-     * </ul>
-     *
-     * @param url The URL from which the client will download the texture
-     *     pack. The string must contain only US-ASCII characters and should
-     *     be encoded as per RFC 1738.
-     * @throws IllegalArgumentException Thrown if the URL is null.
-     * @throws IllegalArgumentException Thrown if the URL is too long.
-     * @deprecated Minecraft no longer uses textures packs. Instead you
-     *     should use {@link #setResourcePack(String)}.
-     */
-    @Deprecated
-    public void setTexturePack(String url);
 
     /**
      * Request that the player's client download and switch resource packs.

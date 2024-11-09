@@ -170,31 +170,6 @@ public abstract class FileConfiguration extends MemoryConfiguration {
     }
 
     /**
-     * Loads this {@link FileConfiguration} from the specified stream.
-     * <p>
-     * All the values contained within this configuration will be removed,
-     * leaving only settings and defaults, and the new values will be loaded
-     * from the given stream.
-     * <p>
-     * This will attempt to use the {@link Charset#defaultCharset()}, unless
-     * {@link #UTF8_OVERRIDE} or {@link #UTF_BIG} is specified.
-     *
-     * @param stream Stream to load from
-     * @throws IOException Thrown when the given file cannot be read.
-     * @throws InvalidConfigurationException Thrown when the given file is not
-     *     a valid Configuration.
-     * @throws IllegalArgumentException Thrown when stream is null.
-     * @deprecated This does not consider encoding
-     * @see #load(Reader)
-     */
-    @Deprecated
-    public void load(InputStream stream) throws IOException, InvalidConfigurationException {
-        Validate.notNull(stream, "Stream cannot be null");
-
-        load(new InputStreamReader(stream, UTF8_OVERRIDE ? Charsets.UTF_8 : Charset.defaultCharset()));
-    }
-
-    /**
      * Loads this {@link FileConfiguration} from the specified reader.
      * <p>
      * All the values contained within this configuration will be removed,

@@ -40,15 +40,6 @@ public interface BlockState extends Metadatable {
     Material getType();
 
     /**
-     * Gets the type-id of this block
-     *
-     * @return block type-id
-     * @deprecated Magic value
-     */
-    @Deprecated
-    int getTypeId();
-
-    /**
      * Gets the light level between 0-15
      *
      * @return light level
@@ -122,16 +113,6 @@ public interface BlockState extends Metadatable {
     void setType(Material type);
 
     /**
-     * Sets the type-id of this block
-     *
-     * @param type Type-Id to change this block to
-     * @return Whether it worked?
-     * @deprecated Magic value
-     */
-    @Deprecated
-    boolean setTypeId(int type);
-
-    /**
      * Attempts to update the block represented by this state, setting it to
      * the new values as defined by this state.
      * <p>
@@ -177,18 +158,4 @@ public interface BlockState extends Metadatable {
      * @return true if the update was successful, otherwise false
      */
     boolean update(boolean force, boolean applyPhysics);
-
-    /**
-     * @return The data as a raw byte.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public byte getRawData();
-
-    /**
-     * @param data The new data value for the block.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public void setRawData(byte data);
 }

@@ -18,25 +18,6 @@ import org.bukkit.metadata.Metadatable;
 public interface Block extends Metadatable {
 
     /**
-     * Gets the metadata for this block
-     *
-     * @return block specific metadata
-     * @deprecated Magic value
-     */
-    @Deprecated
-    byte getData();
-
-    /**
-     * Gets the block at the given offsets
-     *
-     * @param modX X-coordinate offset
-     * @param modY Y-coordinate offset
-     * @param modZ Z-coordinate offset
-     * @return Block at the given offsets
-     */
-    Block getRelative(int modX, int modY, int modZ);
-
-    /**
      * Gets the block at the given face
      * <p>
      * This method is equal to getRelative(face, 1)
@@ -71,15 +52,6 @@ public interface Block extends Metadatable {
      * @return block type
      */
     Material getType();
-
-    /**
-     * Gets the type-id of this block
-     *
-     * @return block type-id
-     * @deprecated Magic value
-     */
-    @Deprecated
-    int getTypeId();
 
     /**
      * Gets the light level between 0-15
@@ -159,24 +131,7 @@ public interface Block extends Metadatable {
      */
     Chunk getChunk();
 
-    /**
-     * Sets the metadata for this block
-     *
-     * @param data New block specific metadata
-     * @deprecated Magic value
-     */
-    @Deprecated
-    void setData(byte data);
 
-    /**
-     * Sets the metadata for this block
-     *
-     * @param data New block specific metadata
-     * @param applyPhysics False to cancel physics from the changed block.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    void setData(byte data, boolean applyPhysics);
 
     /**
      * Sets the type of this block
@@ -184,39 +139,6 @@ public interface Block extends Metadatable {
      * @param type Material to change this block to
      */
     void setType(Material type);
-
-    /**
-     * Sets the type-id of this block
-     *
-     * @param type Type-Id to change this block to
-     * @return whether the block was changed
-     * @deprecated Magic value
-     */
-    @Deprecated
-    boolean setTypeId(int type);
-
-    /**
-     * Sets the type-id of this block
-     *
-     * @param type Type-Id to change this block to
-     * @param applyPhysics False to cancel physics on the changed block.
-     * @return whether the block was changed
-     * @deprecated Magic value
-     */
-    @Deprecated
-    boolean setTypeId(int type, boolean applyPhysics);
-
-    /**
-     * Sets the type-id of this block
-     *
-     * @param type Type-Id to change this block to
-     * @param data The data value to change this block to
-     * @param applyPhysics False to cancel physics on the changed block
-     * @return whether the block was changed
-     * @deprecated Magic value
-     */
-    @Deprecated
-    boolean setTypeIdAndData(int type, byte data, boolean applyPhysics);
 
     /**
      * Gets the face relation of this block compared to the given block

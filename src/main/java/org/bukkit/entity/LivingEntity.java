@@ -39,78 +39,6 @@ public interface LivingEntity extends Entity, Damageable, ProjectileSource {
      */
     public Location getEyeLocation();
 
-    /**
-     * Gets all blocks along the living entity's line of sight.
-     * <p>
-     * This list contains all blocks from the living entity's eye position to
-     * target inclusive.
-     *
-     * @param transparent HashSet containing all transparent block IDs (set to
-     *     null for only air)
-     * @param maxDistance this is the maximum distance to scan (may be limited
-     *     by server by at least 100 blocks, no less)
-     * @return list containing all blocks along the living entity's line of
-     *     sight
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public List<Block> getLineOfSight(HashSet<Byte> transparent, int maxDistance);
-
-    /**
-     * Gets the block that the living entity has targeted.
-     *
-     * @param transparent HashSet containing all transparent block IDs (set to
-     *     null for only air)
-     * @param maxDistance this is the maximum distance to scan (may be limited
-     *     by server by at least 100 blocks, no less)
-     * @return block that the living entity has targeted
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public Block getTargetBlock(HashSet<Byte> transparent, int maxDistance);
-
-    /**
-     * Gets the last two blocks along the living entity's line of sight.
-     * <p>
-     * The target block will be the last block in the list.
-     *
-     * @param transparent HashSet containing all transparent block IDs (set to
-     *     null for only air)
-     * @param maxDistance this is the maximum distance to scan. This may be
-     *     further limited by the server, but never to less than 100 blocks
-     * @return list containing the last 2 blocks along the living entity's
-     *     line of sight
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public List<Block> getLastTwoTargetBlocks(HashSet<Byte> transparent, int maxDistance);
-
-    /**
-     * Throws an egg from the living entity.
-     *
-     * @deprecated use launchProjectile(Egg.class) instead
-     * @return the egg thrown
-     */
-    @Deprecated
-    public Egg throwEgg();
-
-    /**
-     * Throws a snowball from the living entity.
-     *
-     * @deprecated use launchProjectile(Snowball.class) instead
-     * @return the snowball thrown
-     */
-    @Deprecated
-    public Snowball throwSnowball();
-
-    /**
-     * Shoots an arrow from the living entity.
-     *
-     * @deprecated use launchProjectile(Arrow.class) instead
-     * @return the arrow shot
-     */
-    @Deprecated
-    public Arrow shootArrow();
 
     /**
      * Returns the amount of air that the living entity has remaining, in
@@ -170,27 +98,11 @@ public interface LivingEntity extends Entity, Damageable, ProjectileSource {
     public double getLastDamage();
 
     /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public int _INVALID_getLastDamage();
-
-    /**
      * Sets the damage dealt within the current no damage ticks time period.
      *
      * @param damage amount of damage
      */
     public void setLastDamage(double damage);
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public void _INVALID_setLastDamage(int damage);
 
     /**
      * Returns the living entity's current no damage ticks.

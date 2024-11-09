@@ -14,11 +14,6 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
     private double amount;
     private final RegainReason regainReason;
 
-    @Deprecated
-    public EntityRegainHealthEvent(final Entity entity, final int amount, final RegainReason regainReason) {
-        this(entity, (double) amount, regainReason);
-    }
-
     public EntityRegainHealthEvent(final Entity entity, final double amount, final RegainReason regainReason) {
         super(entity);
         this.amount = amount;
@@ -34,15 +29,6 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
         return amount;
     }
 
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public int _INVALID_getAmount() {
-        return NumberConversions.ceil(getAmount());
-    }
 
     /**
      * Sets the amount of regained health
@@ -51,16 +37,6 @@ public class EntityRegainHealthEvent extends EntityEvent implements Cancellable 
      */
     public void setAmount(double amount) {
         this.amount = amount;
-    }
-
-    /**
-     * This method exists for legacy reasons to provide backwards
-     * compatibility. It will not exist at runtime and should not be used
-     * under any circumstances.
-     */
-    @Deprecated
-    public void _INVALID_setAmount(int amount) {
-        setAmount(amount);
     }
 
     public boolean isCancelled() {

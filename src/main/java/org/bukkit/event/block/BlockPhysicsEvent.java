@@ -26,17 +26,6 @@ public class BlockPhysicsEvent extends BlockEvent implements Cancellable {
     /**
      * Gets the type of block that changed, causing this event
      *
-     * @return Changed block's type id
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public int getChangedTypeId() {
-        return changed;
-    }
-
-    /**
-     * Gets the type of block that changed, causing this event
-     *
      * @return Changed block's type
      */
     public Material getChangedType() {

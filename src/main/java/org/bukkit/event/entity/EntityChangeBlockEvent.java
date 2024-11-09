@@ -19,19 +19,6 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
 
     /**
      *
-     * @param what the LivingEntity causing the change
-     * @param block the block (before the change)
-     * @param to the future material being changed to
-     * @deprecated Provided as a backward compatibility before the data byte
-     *     was provided, and type increased to all entities
-     */
-    @Deprecated
-    public EntityChangeBlockEvent(final LivingEntity what, final Block block, final Material to) {
-        this (what, block, to, (byte) 0);
-    }
-
-    /**
-     *
      * @param what the Entity causing the change
      * @param block the block (before the change)
      * @param to the future material being changed to
@@ -71,17 +58,6 @@ public class EntityChangeBlockEvent extends EntityEvent implements Cancellable {
      */
     public Material getTo() {
         return to;
-    }
-
-    /**
-     * Gets the data for the block that would be changed into
-     *
-     * @return the data for the block that would be changed into
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public byte getData() {
-        return data;
     }
 
     @Override

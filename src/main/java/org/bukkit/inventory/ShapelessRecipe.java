@@ -25,7 +25,6 @@ public class ShapelessRecipe implements Recipe {
      * @param result The item you want the recipe to create.
      * @see ShapelessRecipe#addIngredient(Material)
      * @see ShapelessRecipe#addIngredient(MaterialData)
-     * @see ShapelessRecipe#addIngredient(Material,int)
      * @see ShapelessRecipe#addIngredient(int,Material)
      * @see ShapelessRecipe#addIngredient(int,MaterialData)
      * @see ShapelessRecipe#addIngredient(int,Material,int)
@@ -54,18 +53,6 @@ public class ShapelessRecipe implements Recipe {
         return addIngredient(1, ingredient, 0);
     }
 
-    /**
-     * Adds the specified ingredient.
-     *
-     * @param ingredient The ingredient to add.
-     * @param rawdata The data value, or -1 to allow any data value.
-     * @return The changed recipe, so you can chain calls.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public ShapelessRecipe addIngredient(Material ingredient, int rawdata) {
-        return addIngredient(1, ingredient, rawdata);
-    }
 
     /**
      * Adds multiples of the specified ingredient.

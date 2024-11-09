@@ -16,29 +16,11 @@ public interface NoteBlock extends BlockState {
     public Note getNote();
 
     /**
-     * Gets the note.
-     *
-     * @return The note ID.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public byte getRawNote();
-
-    /**
      * Set the note.
      *
      * @param note The note.
      */
     public void setNote(Note note);
-
-    /**
-     * Set the note.
-     *
-     * @param note The note ID.
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public void setRawNote(byte note);
 
     /**
      * Attempts to play the note at block
@@ -48,17 +30,6 @@ public interface NoteBlock extends BlockState {
      * @return true if successful, otherwise false
      */
     public boolean play();
-
-    /**
-     * Plays an arbitrary note with an arbitrary instrument
-     *
-     * @param instrument Instrument ID
-     * @param note Note ID
-     * @return true if successful, otherwise false
-     * @deprecated Magic value
-     */
-    @Deprecated
-    public boolean play(byte instrument, byte note);
 
     /**
      * Plays an arbitrary note with an arbitrary instrument

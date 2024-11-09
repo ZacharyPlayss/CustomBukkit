@@ -53,11 +53,6 @@ public class InventoryClickEvent extends InventoryInteractEvent {
     private ItemStack current = null;
     private int hotbarKey = -1;
 
-    @Deprecated
-    public InventoryClickEvent(InventoryView view, SlotType type, int slot, boolean right, boolean shift) {
-        this(view, type, slot, right ? (shift ? ClickType.SHIFT_RIGHT : ClickType.RIGHT) : (shift ? ClickType.SHIFT_LEFT : ClickType.LEFT), InventoryAction.SWAP_WITH_CURSOR);
-    }
-
     public InventoryClickEvent(InventoryView view, SlotType type, int slot, ClickType click, InventoryAction action) {
         super(view);
         this.slot_type = type;
@@ -133,20 +128,6 @@ public class InventoryClickEvent extends InventoryInteractEvent {
      */
     public boolean isShiftClick() {
         return click.isShiftClick();
-    }
-
-    /**
-     * Sets the item on the cursor.
-     *
-     * @param stack the new cursor item
-     * @deprecated This changes the ItemStack in their hand before any
-     *     calculations are applied to the Inventory, which has a tendency to
-     *     create inconsistencies between the Player and the server, and to
-     *     make unexpected changes in the behavior of the clicked Inventory.
-     */
-    @Deprecated
-    public void setCursor(ItemStack stack) {
-        getView().setCursor(stack);
     }
 
     /**

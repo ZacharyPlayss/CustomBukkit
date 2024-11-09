@@ -59,15 +59,6 @@ public abstract class InventoryView {
         public InventoryType getType() {
             return style;
         }
-
-        /**
-         *
-         * @deprecated Magic value
-         */
-        @Deprecated
-        public int getId() {
-            return id;
-        }
     }
     /**
      * Get the upper inventory involved in this transaction.

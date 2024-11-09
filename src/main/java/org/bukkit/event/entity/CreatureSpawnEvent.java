@@ -22,12 +22,6 @@ public class CreatureSpawnEvent extends EntityEvent implements Cancellable {
         this.spawnReason = spawnReason;
     }
 
-    @Deprecated
-    public CreatureSpawnEvent(Entity spawnee, CreatureType type, Location loc, SpawnReason reason) {
-        super(spawnee);
-        spawnReason = reason;
-    }
-
     public boolean isCancelled() {
         return canceled;
     }
@@ -48,18 +42,6 @@ public class CreatureSpawnEvent extends EntityEvent implements Cancellable {
      */
     public Location getLocation() {
         return getEntity().getLocation();
-    }
-
-    /**
-     * Gets the type of creature being spawned.
-     *
-     * @return A CreatureType value detailing the type of creature being
-     *     spawned
-     * @deprecated In favour of {@link #getEntityType()}.
-     */
-    @Deprecated
-    public CreatureType getCreatureType() {
-        return CreatureType.fromEntityType(getEntityType());
     }
 
     /**
@@ -115,13 +97,6 @@ public class CreatureSpawnEvent extends EntityEvent implements Cancellable {
          * When a creature spawns because of a lightning strike
          */
         LIGHTNING,
-        /**
-         * When a creature is spawned by a player that is sleeping
-         *
-         * @deprecated No longer used
-         */
-        @Deprecated
-        BED,
         /**
          * When a snowman is spawned by being built
          */
