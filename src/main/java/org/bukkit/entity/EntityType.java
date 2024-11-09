@@ -155,7 +155,7 @@ public enum EntityType {
     /**
      * A fishing line and bobber.
      */
-    FISHING_HOOK(null, Fish.class, -1, false),
+    FISHING_HOOK(null, FishHook.class, -1, false),
     /**
      * A bolt of lightning.
      * <p>

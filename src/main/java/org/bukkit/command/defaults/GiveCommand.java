@@ -49,10 +49,6 @@ public class GiveCommand extends VanillaCommand {
         if (player != null) {
             Material material = Material.matchMaterial(args[1]);
 
-            if (material == null) {
-                material = Bukkit.getUnsafe().getMaterialFromInternalName(args[1]);
-            }
-
             if (material != null) {
                 int amount = 1;
                 short data = 0;
@@ -68,15 +64,6 @@ public class GiveCommand extends VanillaCommand {
                 }
 
                 ItemStack stack = new ItemStack(material, amount, data);
-
-                if (args.length >= 5) {
-                    try {
-                        stack = Bukkit.getUnsafe().modifyItemStack(stack, Joiner.on(' ').join(Arrays.asList(args).subList(4, args.length)));
-                    } catch (Throwable t) {
-                        player.sendMessage("Not a valid tag");
-                        return true;
-                    }
-                }
 
                 player.getInventory().addItem(stack);
 
@@ -122,7 +109,7 @@ public class GiveCommand extends VanillaCommand {
                 }
             }
 
-            return Bukkit.getUnsafe().tabCompleteInternalMaterialName(arg, completion);
+            return materials;
         }
         return ImmutableList.of();
     }

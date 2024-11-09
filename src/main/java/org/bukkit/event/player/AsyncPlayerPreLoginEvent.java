@@ -42,18 +42,6 @@ public class AsyncPlayerPreLoginEvent extends Event {
         return result;
     }
 
-    /**
-     * Gets the current result of the login, as an enum
-     *
-     * @return Current Result of the login
-     * @deprecated This method uses a deprecated enum from {@link
-     *     PlayerPreLoginEvent}
-     * @see #getLoginResult()
-     */
-    @Deprecated
-    public PlayerPreLoginEvent.Result getResult() {
-        return result == null ? null : result.old();
-    }
 
     /**
      * Sets the new result of the login, as an enum
@@ -62,19 +50,6 @@ public class AsyncPlayerPreLoginEvent extends Event {
      */
     public void setLoginResult(final Result result) {
         this.result = result;
-    }
-
-    /**
-     * Sets the new result of the login, as an enum
-     *
-     * @param result New result to set
-     * @deprecated This method uses a deprecated enum from {@link
-     *     PlayerPreLoginEvent}
-     * @see #setLoginResult(Result)
-     */
-    @Deprecated
-    public void setResult(final PlayerPreLoginEvent.Result result) {
-        this.result = result == null ? null : Result.valueOf(result.name());
     }
 
     /**
@@ -114,22 +89,6 @@ public class AsyncPlayerPreLoginEvent extends Event {
         this.result = result;
         this.message = message;
     }
-
-    /**
-     * Disallows the player from logging in, with the given reason
-     *
-     * @param result New result for disallowing the player
-     * @param message Kick message to display to the user
-     * @deprecated This method uses a deprecated enum from {@link
-     *     PlayerPreLoginEvent}
-     * @see #disallow(Result, String)
-     */
-    @Deprecated
-    public void disallow(final PlayerPreLoginEvent.Result result, final String message) {
-        this.result = result == null ? null : Result.valueOf(result.name());
-        this.message = message;
-    }
-
     /**
      * Gets the player's name.
      *
@@ -193,9 +152,5 @@ public class AsyncPlayerPreLoginEvent extends Event {
          */
         KICK_OTHER;
 
-        @Deprecated
-        private PlayerPreLoginEvent.Result old() {
-            return PlayerPreLoginEvent.Result.valueOf(name());
-        }
     }
 }

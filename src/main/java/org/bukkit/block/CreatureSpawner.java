@@ -1,6 +1,5 @@
 package org.bukkit.block;
 
-import org.bukkit.entity.CreatureType;
 import org.bukkit.entity.EntityType;
 
 /**

@@ -117,7 +117,6 @@ If you answered yes to any of these questions, chances are high your change does
     import org.bukkit.event.block.SignChangeEvent;
     import org.bukkit.event.player.AsyncPlayerChatEvent;
     import org.bukkit.event.player.PlayerAnimationEvent;
-    import org.bukkit.event.player.PlayerChatEvent;
     import org.bukkit.event.player.PlayerCommandPreprocessEvent;
     import org.bukkit.event.player.PlayerInteractEntityEvent;
     import org.bukkit.event.player.PlayerItemHeldEvent;
@@ -368,7 +367,6 @@ Changes to a Minecraft class should be clearly marked using CraftBukkit comments
     import org.bukkit.event.block.SignChangeEvent;
     import org.bukkit.event.player.AsyncPlayerChatEvent;
     import org.bukkit.event.player.PlayerAnimationEvent;
-    import org.bukkit.event.player.PlayerChatEvent;
     import org.bukkit.event.player.PlayerCommandPreprocessEvent;
     import org.bukkit.event.player.PlayerInteractEntityEvent;
     import org.bukkit.event.player.PlayerItemHeldEvent;

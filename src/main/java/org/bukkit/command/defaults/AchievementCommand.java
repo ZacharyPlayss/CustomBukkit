@@ -1,8 +1,6 @@
 package org.bukkit.command.defaults;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 import org.apache.commons.lang.Validate;
 import org.bukkit.Achievement;
@@ -21,6 +19,19 @@ import org.bukkit.event.player.PlayerStatisticIncrementEvent;
 import com.google.common.collect.ImmutableList;
 
 public class AchievementCommand extends VanillaCommand {
+
+    private static final Map<String, Achievement> ACHIEVEMENT_MAP = new HashMap<>();
+    private static final Map<String, Statistic> STATISTIC_MAP = new HashMap<>();
+
+    static {
+        for (Achievement achievement : Achievement.values()) {
+            ACHIEVEMENT_MAP.put(achievement.name().toLowerCase(), achievement);
+        }
+        for (Statistic statistic : Statistic.values()) {
+            STATISTIC_MAP.put(statistic.name().toLowerCase(), statistic);
+        }
+    }
+
     public AchievementCommand() {
         super("achievement");
         this.description = "Gives the specified player an achievement or changes a statistic value. Use '*' to give all achievements.";
@@ -42,7 +53,7 @@ public class AchievementCommand extends VanillaCommand {
             return false;
         }
 
-        String statisticString = args[1];
+        String statisticString = args[1].toLowerCase();
         Player player = null;
 
         if (args.length > 2) {
@@ -71,8 +82,8 @@ public class AchievementCommand extends VanillaCommand {
             return true;
         }
 
-        Achievement achievement = Bukkit.getUnsafe().getAchievementFromInternalName(statisticString);
-        Statistic statistic = Bukkit.getUnsafe().getStatisticFromInternalName(statisticString);
+        Achievement achievement = ACHIEVEMENT_MAP.get(statisticString);
+        Statistic statistic = STATISTIC_MAP.get(statisticString);
 
         if (achievement != null) {
             if (player.hasAchievement(achievement)) {
@@ -87,7 +98,6 @@ public class AchievementCommand extends VanillaCommand {
                 return true;
             }
             player.awardAchievement(achievement);
-                
             Command.broadcastCommandMessage(sender, String.format("Successfully given %s the stat %s", player.getName(), statisticString));
             return true;
         }
@@ -163,25 +173,5 @@ public class AchievementCommand extends VanillaCommand {
 
         Command.broadcastCommandMessage(sender, String.format("Successfully given %s the stat %s", player.getName(), statisticString));
         return true;
-    }
-
-    @Override
-    public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
-        Validate.notNull(sender, "Sender cannot be null");
-        Validate.notNull(args, "Arguments cannot be null");
-        Validate.notNull(alias, "Alias cannot be null");
-
-        if (args.length == 1) {
-            return Arrays.asList("give");
-        }
-
-        if (args.length == 2) {
-            return Bukkit.getUnsafe().tabCompleteInternalStatisticOrAchievementName(args[1], new ArrayList<String>());
-        }
-
-        if (args.length == 3) {
-            return super.tabComplete(sender, alias, args);
-        }
-        return ImmutableList.of();
     }
 }

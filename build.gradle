@@ -26,11 +26,6 @@ dependencies {
     testImplementation 'org.hamcrest:hamcrest-library:1.3'
 }
 
-tasks.withType(JavaCompile) {
-    sourceCompatibility = '1.8'
-    targetCompatibility = '1.8'
-}
-
 // Define your build tasks, including the 'shade' equivalent and other plugins
 
 // Custom shaded JAR (equivalent to Maven Shade plugin)
